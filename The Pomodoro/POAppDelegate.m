@@ -16,6 +16,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+    
     POTimerViewController *timerViewController = [POTimerViewController new];
     timerViewController.tabBarItem.title = @"Timer";
     timerViewController.tabBarItem.image = [UIImage imageNamed:@"timer.png"];
@@ -26,7 +27,7 @@
     
     UITabBarController *tabBarController = [UITabBarController new];
     
-    tabBarController.viewControllers = @[roundsViewController, timerViewController];
+    tabBarController.viewControllers = @[[[UINavigationController alloc] initWithRootViewController:roundsViewController], [[UINavigationController alloc] initWithRootViewController:timerViewController]];
     
     self.window.rootViewController = tabBarController;
     

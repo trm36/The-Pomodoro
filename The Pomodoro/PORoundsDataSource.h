@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PORoundsDataSource : NSObject
+@interface PORoundsDataSource : NSObject <UITableViewDataSource>
+
+@property (nonatomic) NSInteger currentRound;
+
+- (NSArray *)roundsArray;
 
 @end

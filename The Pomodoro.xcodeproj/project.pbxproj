@@ -12,6 +12,7 @@
 		344AFD8B19D2591300ED36BC /* PORoundsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 344AFD8A19D2591300ED36BC /* PORoundsDataSource.m */; };
 		344AFD8E19D25EAC00ED36BC /* rounds.png in Resources */ = {isa = PBXBuildFile; fileRef = 344AFD8C19D25EAC00ED36BC /* rounds.png */; };
 		344AFD8F19D25EAC00ED36BC /* timer.png in Resources */ = {isa = PBXBuildFile; fileRef = 344AFD8D19D25EAC00ED36BC /* timer.png */; };
+		344AFD9219D2658300ED36BC /* TRMTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 344AFD9119D2658300ED36BC /* TRMTimer.m */; };
 		7141B2E6193DBDFD0084F9F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7141B2E5193DBDFD0084F9F1 /* Foundation.framework */; };
 		7141B2E8193DBDFD0084F9F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7141B2E7193DBDFD0084F9F1 /* CoreGraphics.framework */; };
 		7141B2EA193DBDFD0084F9F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7141B2E9193DBDFD0084F9F1 /* UIKit.framework */; };
@@ -45,6 +46,8 @@
 		344AFD8A19D2591300ED36BC /* PORoundsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PORoundsDataSource.m; sourceTree = "<group>"; };
 		344AFD8C19D25EAC00ED36BC /* rounds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rounds.png; sourceTree = "<group>"; };
 		344AFD8D19D25EAC00ED36BC /* timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer.png; sourceTree = "<group>"; };
+		344AFD9019D2658300ED36BC /* TRMTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRMTimer.h; sourceTree = "<group>"; };
+		344AFD9119D2658300ED36BC /* TRMTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRMTimer.m; sourceTree = "<group>"; };
 		7141B2E2193DBDFD0084F9F1 /* The Pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Pomodoro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7141B2E5193DBDFD0084F9F1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7141B2E7193DBDFD0084F9F1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -124,6 +127,8 @@
 				7141B2F5193DBDFD0084F9F1 /* POAppDelegate.m */,
 				344AFD8C19D25EAC00ED36BC /* rounds.png */,
 				344AFD8D19D25EAC00ED36BC /* timer.png */,
+				344AFD9019D2658300ED36BC /* TRMTimer.h */,
+				344AFD9119D2658300ED36BC /* TRMTimer.m */,
 				344AFD8319D258DF00ED36BC /* POTimerViewController.h */,
 				344AFD8419D258DF00ED36BC /* POTimerViewController.m */,
 				344AFD8619D258EB00ED36BC /* PORoundsViewController.h */,
@@ -264,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				344AFD8B19D2591300ED36BC /* PORoundsDataSource.m in Sources */,
+				344AFD9219D2658300ED36BC /* TRMTimer.m in Sources */,
 				344AFD8819D258EB00ED36BC /* PORoundsViewController.m in Sources */,
 				344AFD8519D258DF00ED36BC /* POTimerViewController.m in Sources */,
 				7141B2F2193DBDFD0084F9F1 /* main.m in Sources */,
