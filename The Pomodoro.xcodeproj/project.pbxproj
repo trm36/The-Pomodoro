@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		343EF1591A9263DB00CB57BB /* TimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 343EF1571A9263DB00CB57BB /* TimerViewController.m */; };
+		343EF15A1A9263DB00CB57BB /* TimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 343EF1581A9263DB00CB57BB /* TimerViewController.xib */; };
+		343EF15D1A92645100CB57BB /* RoundsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 343EF15C1A92645100CB57BB /* RoundsViewController.m */; };
 		7141B2E6193DBDFD0084F9F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7141B2E5193DBDFD0084F9F1 /* Foundation.framework */; };
 		7141B2E8193DBDFD0084F9F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7141B2E7193DBDFD0084F9F1 /* CoreGraphics.framework */; };
 		7141B2EA193DBDFD0084F9F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7141B2E9193DBDFD0084F9F1 /* UIKit.framework */; };
@@ -32,6 +35,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		343EF1561A9263DB00CB57BB /* TimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerViewController.h; sourceTree = "<group>"; };
+		343EF1571A9263DB00CB57BB /* TimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerViewController.m; sourceTree = "<group>"; };
+		343EF1581A9263DB00CB57BB /* TimerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerViewController.xib; sourceTree = "<group>"; };
+		343EF15B1A92645100CB57BB /* RoundsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundsViewController.h; sourceTree = "<group>"; };
+		343EF15C1A92645100CB57BB /* RoundsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundsViewController.m; sourceTree = "<group>"; };
 		7141B2E2193DBDFD0084F9F1 /* The Pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Pomodoro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7141B2E5193DBDFD0084F9F1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7141B2E7193DBDFD0084F9F1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -109,6 +117,11 @@
 			children = (
 				7141B2F4193DBDFD0084F9F1 /* POAppDelegate.h */,
 				7141B2F5193DBDFD0084F9F1 /* POAppDelegate.m */,
+				343EF1561A9263DB00CB57BB /* TimerViewController.h */,
+				343EF1571A9263DB00CB57BB /* TimerViewController.m */,
+				343EF1581A9263DB00CB57BB /* TimerViewController.xib */,
+				343EF15B1A92645100CB57BB /* RoundsViewController.h */,
+				343EF15C1A92645100CB57BB /* RoundsViewController.m */,
 				7141B2F7193DBDFD0084F9F1 /* Images.xcassets */,
 				7141B2EC193DBDFD0084F9F1 /* Supporting Files */,
 			);
@@ -220,6 +233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				343EF15A1A9263DB00CB57BB /* TimerViewController.xib in Resources */,
 				7141B2F0193DBDFD0084F9F1 /* InfoPlist.strings in Resources */,
 				7141B2F8193DBDFD0084F9F1 /* Images.xcassets in Resources */,
 			);
@@ -240,8 +254,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				343EF1591A9263DB00CB57BB /* TimerViewController.m in Sources */,
 				7141B2F2193DBDFD0084F9F1 /* main.m in Sources */,
 				7141B2F6193DBDFD0084F9F1 /* POAppDelegate.m in Sources */,
+				343EF15D1A92645100CB57BB /* RoundsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +454,7 @@
 				7141B310193DBDFE0084F9F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7141B311193DBDFE0084F9F1 /* Build configuration list for PBXNativeTarget "The PomodoroTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +463,7 @@
 				7141B313193DBDFE0084F9F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
