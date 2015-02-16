@@ -1,3 +1,4 @@
+
 //
 //  TimerViewController.m
 //  The Pomodoro
@@ -9,6 +10,10 @@
 #import "TimerViewController.h"
 
 @interface TimerViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *timerLabel;
+@property (weak, nonatomic) IBOutlet UIButton *timerButton;
+@property (assign, nonatomic) BOOL timerIsOn;
 
 @end
 
@@ -22,6 +27,20 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)toggleTimer
+{
+    if (self.timerIsOn)
+    {
+        
+    }
+    else
+    {
+        self.timerIsOn = YES;
+        self.timerButton.enabled = NO;
+    }
+    
 }
 
 /*
