@@ -14,10 +14,24 @@ static NSString *reuseID = @"reuseID";
 @interface RoundsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
+@property (assign, nonatomic) NSInteger currentRound;
 
 @end
 
 @implementation RoundsViewController
+
+- (instancetype)init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        [self registerForNotifications];
+    }
+    
+    return self;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,6 +42,7 @@ static NSString *reuseID = @"reuseID";
     self.tableView.dataSource = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:reuseID];
     [self.view addSubview:self.tableView];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,17 +75,38 @@ static NSString *reuseID = @"reuseID";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self roundSelectedAtRow:indexPath.row];
+    self.currentRound = indexPath.row;
+    [self roundSelected];
 }
 
 #pragma mark - Notifications Methods
 
--(void)roundSelectedAtRow:(NSInteger)index
+-(void)roundSelected
 {
-    [POTimer sharedInstance].minutes = ((NSInteger)[self roundTimes][index]);
+    [POTimer sharedInstance].minutes = [[self roundTimes][self.currentRound] integerValue];
     [POTimer sharedInstance].seconds = 0;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:currentRoundNotification object:nil];
+}
+
+-(void)registerForNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(roundComplete) name:roundCompleteNotification object:nil];
+}
+
+-(void)unregisterForNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)roundComplete
+{
+    if (self.currentRound < [self roundTimes].count - 1)
+    {
+        self.currentRound++;
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:self.currentRound inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [self roundSelected];
+    }
 }
 
 

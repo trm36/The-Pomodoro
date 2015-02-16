@@ -52,6 +52,8 @@
 -(void)registerForNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTimerLabel) name:secondTickNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newRound) name:currentRoundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newRound) name:roundCompleteNotification object:nil];
 }
 
 -(void)unregisterForNotifications
@@ -59,21 +61,18 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+-(void)newRound
+{
+    [self updateTimerLabel];
+    self.timerButton.enabled = YES;
+}
+
 #pragma mark - Timer Methods
 
 - (IBAction)toggleTimer
 {
-    if (self.timerIsOn)
-    {
-        
-    }
-    else
-    {
-        self.timerIsOn = YES;
         self.timerButton.enabled = NO;
-        [[POTimer sharedInstance] startTimer];
-    }
-    
+    [[POTimer sharedInstance] startTimer];
 }
 
 - (void)updateTimerLabel
