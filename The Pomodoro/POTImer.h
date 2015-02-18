@@ -11,6 +11,7 @@
 static NSString *secondTickNotification = @"secondTickNotification";
 static NSString *roundCompleteNotification = @"roundCompleteNotification";
 static NSString *currentRoundNotification = @"currentRoundNotification";
+static NSString *expirationDate = @"expiryDate";
 
 @interface POTimer : NSObject
 
@@ -20,5 +21,7 @@ static NSString *currentRoundNotification = @"currentRoundNotification";
 + (POTimer *)sharedInstance;
 - (void)startTimer;
 - (void)cancelTimer;
+- (void)prepareForBackground;
+- (void)loadFromBackground;
 
 @end

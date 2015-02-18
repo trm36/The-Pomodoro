@@ -8,9 +8,12 @@
 
 #import "POTimer.h"
 
+
+
 @interface POTimer()
 
 @property (assign, nonatomic) BOOL isOn;
+@property (strong, nonatomic) NSDate *expirationDate;
 
 @end
 
@@ -33,8 +36,8 @@
     UILocalNotification *timerExpiredNotification = [UILocalNotification new];
     
     NSTimeInterval interval = self.minutes * 60 + self.seconds;
-    
-    timerExpiredNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:interval];
+    self.expirationDate = [NSDate dateWithTimeIntervalSinceNow:interval];
+    timerExpiredNotification.fireDate = self.expirationDate;
     timerExpiredNotification.timeZone = [NSTimeZone defaultTimeZone];
     timerExpiredNotification.soundName = UILocalNotificationDefaultSoundName;
     timerExpiredNotification.alertBody = @"Round Complete. Continue with next round?";
@@ -88,6 +91,19 @@
     }
     
     return self.isOn;
+}
+
+-(void)prepareForBackground
+{
+    [[NSUserDefaults standardUserDefaults] setObject:self.expirationDate forKey:expirationDate];
+}
+
+-(void)loadFromBackground
+{
+    self.expirationDate = [[NSUserDefaults standardUserDefaults] objectForKey:expirationDate];
+    NSTimeInterval seconds = [self.expirationDate timeIntervalSinceNow];
+    self.minutes = seconds / 60;
+    self.seconds = seconds - (self.minutes * 60);
 }
 
 @end
