@@ -29,6 +29,19 @@
 -(void)startTimer
 {
     self.isOn = YES;
+    
+    UILocalNotification *timerExpiredNotification = [UILocalNotification new];
+    
+    NSTimeInterval interval = self.minutes * 60 + self.seconds;
+    
+    timerExpiredNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:interval];
+    timerExpiredNotification.timeZone = [NSTimeZone defaultTimeZone];
+    timerExpiredNotification.soundName = UILocalNotificationDefaultSoundName;
+    timerExpiredNotification.alertBody = @"Round Complete. Continue with next round?";
+    timerExpiredNotification.alertAction = @"view";
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:timerExpiredNotification];
+    
     [self isActive];
 }
 
@@ -36,6 +49,7 @@
 {
     self.isOn = NO;
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
 }
 
 -(void)endTimer

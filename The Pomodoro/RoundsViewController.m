@@ -37,6 +37,8 @@ static NSString *reuseID = @"reuseID";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = @"Round Times";
+    
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -77,6 +79,7 @@ static NSString *reuseID = @"reuseID";
 {
     self.currentRound = indexPath.row;
     [self roundSelected];
+    [[POTimer sharedInstance] cancelTimer];
 }
 
 #pragma mark - Notifications Methods
@@ -104,6 +107,12 @@ static NSString *reuseID = @"reuseID";
     if (self.currentRound < [self roundTimes].count - 1)
     {
         self.currentRound++;
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:self.currentRound inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [self roundSelected];
+    }
+    else
+    {
+        self.currentRound = 0;
         [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:self.currentRound inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
         [self roundSelected];
     }

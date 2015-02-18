@@ -9,6 +9,7 @@
 #import "POAppDelegate.h"
 #import "RoundsViewController.h"
 #import "TimerViewController.h"
+#import "POTimer.h"
 
 @implementation POAppDelegate
 
@@ -23,17 +24,31 @@
     timerVC.tabBarItem.image = [UIImage imageNamed:@"timer.png"];
     
     RoundsViewController *roundsVC = [RoundsViewController new];
-    roundsVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Rounds" image:[UIImage imageNamed:@"tomato.png"] tag:1];
+    UINavigationController *roundsNavController = [[UINavigationController alloc] initWithRootViewController:roundsVC];
+    roundsNavController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Rounds" image:[UIImage imageNamed:@"tomato.png"] tag:1];
     
     
     UITabBarController *tabBarController = [UITabBarController new];
-    tabBarController.viewControllers = @[timerVC, roundsVC];
+    tabBarController.viewControllers = @[timerVC, roundsNavController];
     
     self.window.rootViewController = tabBarController;
     
     
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Round Finished!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:nil]];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Start Next Round" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [[POTimer sharedInstance] startTimer];
+    }]];
+    
+    [self.window.rootViewController presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -53,9 +68,10 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound) categories:nil]];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
